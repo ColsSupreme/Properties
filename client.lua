@@ -9,41 +9,6 @@ Citizen.CreateThread(function()
 end)
 
 
-local locations = {
-
-
-    --[[ SINGLE OWNER EXAMPLE
-		{
-			name = 'Test',
-			price = '$999,999',
-			date = '09/13/2019',
-			owner = 'test',
-			x = -1508.78,
-			y = 1733.73,
-			z = 109.77,
-		   },
-
-		MULTIOWNER EXAMPLE
-		{
-			name = 'Test',
-			price = '$1,500,000',
-			date = '09/16/2019',
-			owner = nil,
-			owners = {'test1 - 13.33%', 'test2 - 16.66%', 'test3 - 16.66%', 'test4 - 13.33%', 'test5 - 13.33%', 'test6 - 6.66%', 'test7 - 6.66%', 'test8 - 13.33%'},
-			x = 2452.89,
-			y = 4951.3,
-			z = 45.14,
-		},
-	]]--
-        -- Use /propertycoords to grab the coordinates, they auto save into your clipboard after you run the command and then press t. Then you can just do lctrl + v to paste.
-
-	
-}
-
-
-
-
-
 Citizen.CreateThread(function()
 	TriggerServerEvent("GetProperties")
 end)
