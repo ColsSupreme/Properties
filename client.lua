@@ -8,7 +8,7 @@ Citizen.CreateThread(function()
     
 end)
 
-local Realitors = {"Paul R","Agent J","Mady M",'Easton D','W.White'}
+
 local locations = {
 
 
