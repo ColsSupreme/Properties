@@ -221,10 +221,18 @@ AddEventHandler("SellTo", function(name,amount,id,property,toChange,person,check
 	for k,v in ipairs(ident) do
 		local CID = ident[k]
 		local PID = GetPlayerIdentifier(id,1)
-		if CID == PID and #ident == 4 then
-			print()
+		if #ident == 4 then
+			if CID == PID then
+				print()
+			else
+				print("OFF")
+			end
 		else
-			print("OFF")
+			if CID == PID then
+				print()
+			else
+				print("OFF")
+			end
 		end
 	end
 	
