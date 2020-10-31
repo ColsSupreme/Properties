@@ -218,20 +218,27 @@ AddEventHandler("SellTo", function(name,amount,id,property,toChange,person,check
 	print(check .. "Persons name")
 	local ident = json.decode(property.identifiers)["identiy"]
 	local val = json.decode(property.identifiers)[""]
+	local found = false
 	for k,v in ipairs(ident) do
 		local CID = ident[k]
 		local PID = GetPlayerIdentifier(id,1)
-		if #ident == 4 then
-			if CID == PID then
-				print()
+		print(PID .. "  PID")
+		print(CID)
+		if found == false
+			if #ident == 4 then
+				if CID == PID then
+					print()
+					found = true
+				else
+					print("OFF")
+				end
 			else
-				print("OFF")
-			end
-		else
-			if CID == PID then
-				print()
-			else
-				print("OFF")
+
+				if CID == PID then
+					found = true
+				else
+					print("OFF")
+				end
 			end
 		end
 	end
@@ -251,3 +258,10 @@ AddEventHandler("CheckPerson", function(name,amount,id,property,toChange,person)
 		CF.ShowNotification(source,"~r~This person is not online")
 	end
 end)
+
+
+
+function updatdb(name,amount,id,property,toChange,person,check)
+
+
+end
