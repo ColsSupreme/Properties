@@ -224,11 +224,13 @@ AddEventHandler("SellTo", function(name,amount,id,property,toChange,person,check
 		local PID = GetPlayerIdentifier(id,1)
 		print(PID .. "  PID")
 		print(CID)
-		if found == false
+		if found == false then
 			if #ident == 4 then
 				if CID == PID then
 					print()
 					found = true
+					print("found")
+					pos = k
 				else
 					print("OFF")
 				end
@@ -236,12 +238,28 @@ AddEventHandler("SellTo", function(name,amount,id,property,toChange,person,check
 
 				if CID == PID then
 					found = true
+					print("found")
+					pos = k
 				else
 					print("OFF")
 				end
 			end
 		end
 	end
+	print(pos)
+	if found == true then
+		local olddata = property.identifiers
+		print(olddata)
+		if amount-toChange == 0 then
+			print("noneleft")
+			
+		else 
+			print("someleft")
+			local temp = json.decode(olddata)
+			recivervalue = temp.value[pos] + toChange
+			print(recivervalue)
+		end
+	end 
 	
 end)
 
