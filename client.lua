@@ -140,7 +140,7 @@ function OwnerMenu(property,ID,name)
 	CF.UI.Menu.CloseAll()
 
     CF.UI.Menu.Open('default1', GetCurrentResourceName(), 'Owner_menu', {
-	title    = "Owner Menu",
+		title    = "Owner Menu",
         align    = 'center',
         elements = _elements1,
 	},function(data, menu)
@@ -175,7 +175,7 @@ function ChangeName(name)
 			TriggerServerEvent("UpdateName", NewName ,name)
 			menu.close()
 		else
-      		menu.close()
+			menu.close()
 		end
 
         end)
