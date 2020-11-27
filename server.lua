@@ -94,8 +94,8 @@ local locations = {
 			owners = {'A. Ramirez - 50%', 'Braden S - 50%'},
 			x = -0.07,
 			y = 6547.17,
-            z = 31.55,
-            ident = {identiy  = {"license:daa3abdc0c0b894e390c42da76a74362f63a2864","license:4594018e40d58986da2595fdab04744f77b225e9"}, value = {50, 50}},
+			z = 31.55,
+			ident = {identiy  = {"license:daa3abdc0c0b894e390c42da76a74362f63a2864","license:4594018e40d58986da2595fdab04744f77b225e9"}, value = {50, 50}},
 		},
 		{
 			name = 'Jack\'s Crackhouse',
