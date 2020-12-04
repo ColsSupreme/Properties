@@ -66,18 +66,18 @@ function menu(property,ID)
 	local place = property
 	local name = property.name
 	local _elements = {}
-    table.insert(_elements, {label = "<span style='color: #ffffff'><b>Name: " .. property.name .. "</b>",   value = 'name'})
-    table.insert(_elements, {label = "<span style='color: #ffffff'><b>Date: " .. property.date .. "</b>",   value = 'date'})
-	table.insert(_elements, {label = "<span style='color: #ffffff'><b>Sold For: " .. property.price .. "</b>",   value = 'price'})
+    table.insert(_elements, {label = "<span ><b>Name: " .. property.name .. "</b>",   value = 'name'})
+    table.insert(_elements, {label = "<span ><b>Date: " .. property.date .. "</b>",   value = 'date'})
+	table.insert(_elements, {label = "<span ><b>Sold For: " .. property.price .. "</b>",   value = 'price'})
 	if property.owner ~= nil then 
-		table.insert(_elements, {label = "<span style='color: #ffffff'><b>Owner: " .. property.owner .. "</b>",   value = 'owner'})
+		table.insert(_elements, {label = "<span ><b>Owner: " .. property.owner .. "</b>",   value = 'owner'})
 	else
 		local owner = json.decode(place.owners)
 		local val = json.decode(place.identifiers)["value"]
 		print(#owner)
 		for i=1, #owner, 1 do
 			print(owner[i])
-			table.insert(_elements, {label = "<span style='color: #ffffff'><b>Owner: " .. owner[i] .. " - " .. val[i] .. "%</b>",   value = 'owner'})
+			table.insert(_elements, {label = "<span ><b>Owner: " .. owner[i] .. " - " .. val[i] .. "%</b>",   value = 'owner'})
 		end
 	end
     local ident = json.decode(place.identifiers)["identiy"]
@@ -86,7 +86,7 @@ function menu(property,ID)
 	for k,v in ipairs(ident) do
 		print(ident[k])
 		if ID == ident[k]then
-			table.insert(_elements, {label = "<span style='color: color: #ffffff';><b>Owner Menu</b>",   value = 'ownerMenu'})
+			table.insert(_elements, {label = "<span ><b>Owner Menu</b>",   value = 'ownerMenu'})
 		end
 
 	end
@@ -96,7 +96,7 @@ function menu(property,ID)
 
     CF.UI.Menu.CloseAll()
 
-    CF.UI.Menu.Open('default1', GetCurrentResourceName(), 'Prop_Menu', {
+    CF.UI.Menu.Open('default2', GetCurrentResourceName(), 'Prop_Menu', {
         title    = name,
         align    = 'center',
         elements = _elements,
@@ -124,22 +124,22 @@ function OwnerMenu(property,ID,name)
 	for k,v in ipairs(ident) do
 		if ident[k] == ID then
 			if val[k] >= 51 then
-				table.insert(_elements1, {label = '<span style="color: white"><b>Change Name</b></span>',       value = 'change'})
+				table.insert(_elements1, {label = '<span ><b>Change Name</b></span>',       value = 'change'})
 			end
 		end
 	end
-	table.insert(_elements1, {label = '<span style="color: white"><b>Sell to someone</b></span>',       value = 'ST'})
+	table.insert(_elements1, {label = '<span ><b>Sell to someone</b></span>',       value = 'ST'})
 	
 	for k,v in ipairs(ident) do
 		if ident[k] == ID then
-			table.insert(_elements1, {label = '<span style="color: white"><b>You own '..val[k] ..'% </b></span>',       value = 'you'})
+			table.insert(_elements1, {label = '<span ><b>You own '..val[k] ..'% </b></span>',       value = 'you'})
 		end
 	end
 	table.insert(_elements1, {label = '<span style="color: red"><b>Exit</b></span>',       value = 'exit'})
 
 	CF.UI.Menu.CloseAll()
 
-    CF.UI.Menu.Open('default1', GetCurrentResourceName(), 'Owner_menu', {
+    CF.UI.Menu.Open('default2', GetCurrentResourceName(), 'Owner_menu', {
 		title    = "Owner Menu",
         align    = 'center',
         elements = _elements1,
@@ -232,12 +232,12 @@ end
 function Confirm(name,amount,id,property,toChange)
 	local _elements = {}
 	local am = toChange
-	table.insert(_elements, {label = "<span style='color: #ffffff'><b>Name: " .. property.name .. "</b>",   value = 'name'})
-	table.insert(_elements, {label = "<span style='color: #ffffff'><b>You are selling: " .. am .. "%</b>",   value = 'name'})
+	table.insert(_elements, {label = "<span ><b>Name: " .. property.name .. "</b>",   value = 'name'})
+	table.insert(_elements, {label = "<span ><b>You are selling: " .. am .. "%</b>",   value = 'name'})
 	table.insert(_elements, {label = "<span style='color: #00ff08'><b>Confirm</b>",   value = 'Yes'})
 	table.insert(_elements, {label = "<span style='color: #ff0000'><b>Cancel</b>",   value = 'exit'})
 	CF.UI.Menu.CloseAll()
-    CF.UI.Menu.Open('default1', GetCurrentResourceName(), 'Confirm', {
+    CF.UI.Menu.Open('default2', GetCurrentResourceName(), 'Confirm', {
 		title    = "Owner Menu",
         align    = 'center',
         elements = _elements,

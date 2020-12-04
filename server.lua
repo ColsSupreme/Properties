@@ -218,12 +218,16 @@ AddEventHandler("SellTo", function(name,amount,id,property,toChange,person,check
 	print(check .. "Persons name")
 	local ident = json.decode(property.identifiers)["identiy"]
 	local val = json.decode(property.identifiers)[""]
+	local identarray = {}
+	local newnames = {}
+	local newname = nil
+	local newident = {identiy={},value={}}
 	local found = false
 	for k,v in ipairs(ident) do
 		local CID = ident[k]
 		local PID = GetPlayerIdentifier(id,1)
-		print(PID .. "  PID")
-		print(CID)
+		--print(PID .. "  PID")
+		--print(CID)
 		if found == false then
 			if #ident == 4 then
 				if CID == PID then
@@ -231,8 +235,9 @@ AddEventHandler("SellTo", function(name,amount,id,property,toChange,person,check
 					found = true
 					print("found")
 					pos = k
+					print("index  "..k)
 				else
-					print("OFF")
+					--print("OFF")
 				end
 			else
 
@@ -240,24 +245,46 @@ AddEventHandler("SellTo", function(name,amount,id,property,toChange,person,check
 					found = true
 					print("found")
 					pos = k
+					print("index  "..k)
 				else
-					print("OFF")
+					--print("OFF")
 				end
 			end
 		end
 	end
-	print(pos)
+	--print(pos)
 	if found == true then
 		local olddata = property.identifiers
-		print(olddata)
+		--print(olddata)
 		if amount-toChange == 0 then
 			print("noneleft")
-			
+			local temp = json.decode(olddata)
+			print(temp)
+			print(table.unpack(temp))
+			print(pos)
+			print(temp.identiy[pos])
+			for i,b in pairs(temp.identiy) do
+				if i ~= pos then
+					table.insert(newident.identiy,temp.identiy[i])
+					table.insert(newident.value,temp.value[i])
+				end
+			end
+			table.insert( newident.identiy,GetPlayerIdentifier(id,1))
+			table.insert( newident.value,toChange)
+			print(json.encode(newident))
 		else 
 			print("someleft")
 			local temp = json.decode(olddata)
-			recivervalue = temp.value[pos] + toChange
+			recivervalue = temp.value[pos] - toChange
 			print(recivervalue)
+			print(temp)
+			print(pos)
+			print(temp.identiy[pos])		
+		end
+		if property.owner ~= nil then
+			
+		else
+			
 		end
 	end 
 	
